@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<title>Rapihin Skripsi - Carousel margin</title>
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:700;src:url(fonts/bricolage-grotesque-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-weight:800;src:url(fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:500;src:url(fonts/plus-jakarta-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:600;src:url(fonts/plus-jakarta-sans-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:700;src:url(fonts/plus-jakarta-sans-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:800;src:url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:600;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:700;src:url(fonts/ibm-plex-mono-latin-700-normal.woff2) format("woff2")}
+:root{--green:#0E5C4E;--stab:#FFE45C;--ink:#12201D;--red:#C23B22;--blue:#3B82B0;--bg:#F6F8F5}
+*{box-sizing:border-box}
+html,body{margin:0;background:#888}
+.slide{position:relative;width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",sans-serif;padding:64px 80px 72px;display:flex;flex-direction:column}
+.slide.dark{background:var(--green);color:var(--bg)}
+.top{display:flex;justify-content:space-between;align-items:center;height:48px;flex:none}
+.brand{font-family:"Bricolage Grotesque";font-weight:800;font-size:34px;color:var(--green);display:flex;align-items:center;gap:12px}
+.brand i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--stab);box-shadow:0 0 0 3px var(--green) inset}
+.dark .brand{color:var(--bg)}
+.dark .brand i{box-shadow:0 0 0 3px var(--bg) inset}
+.pg{font-family:"IBM Plex Mono";font-weight:600;font-size:32px;color:var(--ink);opacity:.7}
+.dark .pg{color:var(--bg)}
+.body{flex:1;display:flex;flex-direction:column;justify-content:center;gap:36px;min-height:0}
+h1{margin:0;font-family:"Bricolage Grotesque";font-weight:800;font-size:96px;line-height:1.03;letter-spacing:-.015em}
+h2{margin:0;font-family:"Bricolage Grotesque";font-weight:800;font-size:80px;line-height:1.06;letter-spacing:-.01em}
+p{margin:0;font-weight:600;font-size:46px;line-height:1.34}
+mark{white-space:nowrap;background:var(--stab);color:var(--ink);padding:0 .12em;border-radius:.14em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.num{flex:none;width:132px;height:132px;border-radius:30px;background:var(--stab);color:var(--ink);font-family:"IBM Plex Mono";font-weight:700;font-size:92px;line-height:132px;text-align:center}
+.row{display:flex;gap:40px;align-items:center}
+.art{display:flex;justify-content:center;align-items:center;flex:none}
+.note{flex:none;font-weight:600;font-size:40px;line-height:1.3;color:var(--ink)}
+.note b{font-family:"IBM Plex Mono";font-weight:700}
+.chk{display:flex;flex-direction:column;gap:26px}
+.chk div{display:flex;align-items:center;gap:28px;font-weight:700;font-size:46px;line-height:1.25}
+.chk svg{flex:none}
+.chip{display:inline-block;align-self:flex-start;background:var(--ink);color:var(--bg);font-weight:800;font-size:40px;letter-spacing:.06em;padding:12px 30px;border-radius:40px}
+</style>
+</head>
+<body>
+
+<!-- 1 cover -->
+<section class="slide" id="s1">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">01/08</span></div>
+  <div class="body" style="gap:40px">
+    <span class="chip">TIPS FORMAT</span>
+    <h1>Margin skripsi:<br><mark>5 hal</mark> yang perlu<br>kamu cek</h1>
+    <div class="art" style="margin-top:8px">
+      <svg width="660" height="635" viewBox="0 0 520 500" aria-hidden="true">
+        <rect x="150" y="12" width="300" height="420" rx="6" fill="#12201D" opacity=".10"/>
+        <rect x="140" y="2" width="300" height="420" rx="6" fill="#fff" stroke="#12201D" stroke-opacity=".14" stroke-width="2"/>
+        <rect x="140" y="2" width="60" height="420" fill="#FFE45C"/>
+        <g fill="#12201D">
+          <rect x="226" y="40" width="130" height="12" rx="6"/>
+          <rect x="226" y="80" width="190" height="8" rx="4"/><rect x="226" y="104" width="204" height="8" rx="4"/>
+          <rect x="226" y="128" width="196" height="8" rx="4"/><rect x="226" y="152" width="120" height="8" rx="4"/>
+          <rect x="226" y="196" width="200" height="8" rx="4"/><rect x="226" y="220" width="190" height="8" rx="4"/>
+          <rect x="226" y="244" width="204" height="8" rx="4"/><rect x="226" y="268" width="198" height="8" rx="4"/>
+          <rect x="226" y="292" width="110" height="8" rx="4"/><rect x="226" y="336" width="204" height="8" rx="4"/>
+          <rect x="226" y="360" width="150" height="8" rx="4"/>
+        </g>
+        <g stroke="#3B82B0" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M20 212 H140 M140 190 V234"/><path d="M20 190 V234"/>
+        </g>
+        <rect x="14" y="250" width="116" height="56" rx="28" fill="#3B82B0"/>
+        <text x="72" y="289" text-anchor="middle" font-family="IBM Plex Mono" font-weight="700" font-size="34" fill="#fff">4 cm</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 2 kenapa kiri lebar -->
+<section class="slide" id="s2">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">02/08</span></div>
+  <div class="body">
+    <h2>Margin kiri sengaja <mark>lebih lebar</mark></h2>
+    <p>Sisi kiri dijilid. Ruang ekstra menjaga teks agar tidak masuk ke punggung buku.</p>
+    <div class="art" style="margin-top:6px">
+      <svg width="760" height="330" viewBox="0 0 760 330" aria-hidden="true">
+        <rect x="150" y="14" width="400" height="310" rx="6" fill="#12201D" opacity=".10"/>
+        <rect x="140" y="4" width="400" height="310" rx="6" fill="#fff" stroke="#12201D" stroke-opacity=".14" stroke-width="2"/>
+        <rect x="96" y="-2" width="44" height="322" rx="8" fill="#0E5C4E"/>
+        <g stroke="#FFE45C" stroke-width="5" stroke-linecap="round"><path d="M118 30 V60 M118 100 V130 M118 170 V200 M118 240 V270"/></g>
+        <rect x="140" y="4" width="120" height="310" fill="#FFE45C" opacity=".85"/>
+        <g fill="#12201D">
+          <rect x="290" y="40" width="200" height="10" rx="5"/><rect x="290" y="70" width="216" height="10" rx="5"/>
+          <rect x="290" y="100" width="206" height="10" rx="5"/><rect x="290" y="130" width="130" height="10" rx="5"/>
+          <rect x="290" y="180" width="214" height="10" rx="5"/><rect x="290" y="210" width="200" height="10" rx="5"/>
+          <rect x="290" y="240" width="216" height="10" rx="5"/><rect x="290" y="270" width="120" height="10" rx="5"/>
+        </g>
+        <path d="M560 160 H700" stroke="#12201D" stroke-width="4" stroke-linecap="round"/>
+        <text x="570" y="146" font-family="Plus Jakarta Sans" font-weight="800" font-size="30" fill="#12201D">jilid</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 3 pedoman -->
+<section class="slide" id="s3">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">03/08</span></div>
+  <div class="body">
+    <div class="row"><div class="num">1</div><h2>Cek buku pedoman kampus dulu</h2></div>
+    <p>Ukuran margin ditentukan kampus kamu. Angka di konten ini hanya contoh umum.</p>
+    <div class="art">
+      <svg width="400" height="420" viewBox="0 0 400 420" aria-hidden="true">
+        <ellipse cx="204" cy="404" rx="150" ry="12" fill="#12201D" opacity=".12"/>
+        <rect x="44" y="26" width="300" height="370" rx="10" fill="#fff" stroke="#12201D" stroke-opacity=".2" stroke-width="2"/>
+        <rect x="30" y="14" width="300" height="370" rx="12" fill="#0E5C4E"/>
+        <rect x="30" y="14" width="24" height="370" rx="8" fill="#0A453A"/>
+        <path d="M252 14 H288 V104 L270 88 L252 104 Z" fill="#FFE45C"/>
+        <rect x="80" y="170" width="150" height="14" rx="7" fill="#F6F8F5"/>
+        <rect x="80" y="200" width="190" height="14" rx="7" fill="#F6F8F5"/>
+        <rect x="80" y="230" width="120" height="14" rx="7" fill="#FFE45C"/>
+        <circle cx="322" cy="332" r="54" fill="#FFE45C" stroke="#12201D" stroke-width="7"/>
+        <path d="M296 334 L316 354 L350 312" fill="none" stroke="#12201D" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 4 contoh umum -->
+<section class="slide" id="s4">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">04/08</span></div>
+  <div class="body">
+    <div class="row"><div class="num">2</div><h2>Contoh umum:<br><span style="font-family:'IBM Plex Mono';font-weight:700;letter-spacing:-.04em;white-space:nowrap">4-3-3-3 cm</span></h2></div>
+    <p>Urutannya kiri, atas, kanan, bawah. Kampus lain bisa memakai ukuran berbeda.</p>
+    <div class="art">
+      <svg width="900" height="520" viewBox="0 0 900 520" aria-hidden="true">
+        <rect x="320" y="20" width="330" height="480" rx="6" fill="#12201D" opacity=".10"/>
+        <rect x="310" y="10" width="330" height="480" rx="6" fill="#fff" stroke="#12201D" stroke-opacity=".14" stroke-width="2"/>
+        <rect x="310" y="10" width="330" height="480" fill="#3B82B0" opacity=".14"/>
+        <rect x="372" y="62" width="206" height="376" fill="#fff"/>
+        <g fill="#12201D" opacity=".55">
+          <rect x="386" y="80" width="120" height="10" rx="5"/><rect x="386" y="108" width="180" height="8" rx="4"/>
+          <rect x="386" y="130" width="172" height="8" rx="4"/><rect x="386" y="152" width="176" height="8" rx="4"/>
+          <rect x="386" y="174" width="110" height="8" rx="4"/><rect x="386" y="214" width="180" height="8" rx="4"/>
+          <rect x="386" y="236" width="170" height="8" rx="4"/><rect x="386" y="258" width="176" height="8" rx="4"/>
+          <rect x="386" y="280" width="100" height="8" rx="4"/><rect x="386" y="320" width="178" height="8" rx="4"/>
+          <rect x="386" y="342" width="160" height="8" rx="4"/>
+        </g>
+        <g stroke="#3B82B0" stroke-width="5" stroke-linecap="round" fill="none">
+          <path d="M170 250 H372 M310 226 V274 M372 226 V274"/>
+          <path d="M640 250 H770 M578 226 V274 M640 226 V274"/>
+          <path d="M475 10 V62 M451 10 H499 M451 62 H499"/>
+          <path d="M475 438 V490 M451 438 H499 M451 490 H499"/>
+        </g>
+        <g font-family="IBM Plex Mono" font-weight="700" font-size="38" text-anchor="middle">
+          <rect x="30" y="224" width="134" height="62" rx="31" fill="#3B82B0"/><text x="97" y="268" fill="#fff">4 cm</text>
+          <rect x="770" y="224" width="120" height="62" rx="31" fill="#3B82B0"/><text x="830" y="268" fill="#fff">3 cm</text>
+          <rect x="505" y="18" width="130" height="40" rx="20" fill="#3B82B0"/><text x="570" y="49" font-size="30" fill="#fff">3 cm</text>
+          <rect x="505" y="442" width="130" height="40" rx="20" fill="#3B82B0"/><text x="570" y="473" font-size="30" fill="#fff">3 cm</text>
+        </g>
+        <g font-family="Plus Jakarta Sans" font-weight="800" font-size="30" fill="#12201D" text-anchor="middle">
+          <text x="97" y="212">KIRI</text><text x="830" y="212">KANAN</text>
+        </g>
+      </svg>
+    </div>
+    <div class="note">Contoh umum, bukan aturan mutlak.</div>
+  </div>
+</section>
+
+<!-- 5 bagian khusus -->
+<section class="slide" id="s5">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">05/08</span></div>
+  <div class="body">
+    <div class="row"><div class="num">3</div><h2>Cek bagian khusus juga</h2></div>
+    <p>Beberapa kampus mengatur halaman bab baru atau lampiran secara terpisah. Lihat pedomanmu.</p>
+    <div class="art">
+      <svg width="920" height="400" viewBox="0 0 920 400" aria-hidden="true">
+        <g>
+          <rect x="30" y="20" width="240" height="290" rx="6" fill="#fff" stroke="#12201D" stroke-opacity=".18" stroke-width="2"/>
+          <rect x="30" y="20" width="56" height="290" fill="#FFE45C" opacity=".85"/>
+          <g fill="#12201D"><rect x="104" y="60" width="140" height="9" rx="4"/><rect x="104" y="86" width="150" height="9" rx="4"/><rect x="104" y="112" width="130" height="9" rx="4"/><rect x="104" y="138" width="148" height="9" rx="4"/><rect x="104" y="164" width="90" height="9" rx="4"/></g>
+          <text x="150" y="364" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="40" fill="#12201D">Isi</text>
+        </g>
+        <g>
+          <rect x="340" y="20" width="240" height="290" rx="6" fill="#fff" stroke="#12201D" stroke-opacity=".18" stroke-width="2"/>
+          <rect x="340" y="20" width="56" height="290" fill="#FFE45C" opacity=".85"/>
+          <rect x="414" y="64" width="150" height="16" rx="8" fill="#12201D"/>
+          <g fill="#12201D"><rect x="414" y="160" width="150" height="9" rx="4"/><rect x="414" y="186" width="140" height="9" rx="4"/><rect x="414" y="212" width="100" height="9" rx="4"/></g>
+          <text x="460" y="364" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="40" fill="#12201D">Bab baru</text>
+        </g>
+        <g>
+          <rect x="650" y="20" width="240" height="290" rx="6" fill="#fff" stroke="#12201D" stroke-opacity=".18" stroke-width="2"/>
+          <rect x="650" y="20" width="56" height="290" fill="#FFE45C" opacity=".85"/>
+          <rect x="724" y="64" width="110" height="16" rx="8" fill="#12201D"/>
+          <g fill="#12201D"><rect x="724" y="120" width="136" height="9" rx="4"/><rect x="724" y="146" width="120" height="9" rx="4"/><rect x="724" y="172" width="136" height="9" rx="4"/></g>
+          <text x="770" y="364" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="40" fill="#12201D">Lampiran</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 6 atur lewat menu -->
+<section class="slide" id="s6">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">06/08</span></div>
+  <div class="body">
+    <div class="row"><div class="num">4</div><h2>Atur lewat menu, bukan spasi</h2></div>
+    <p>Di Word: Layout &gt; Margins &gt; Custom Margins. Jangan menggeser teks dengan spasi atau Enter.</p>
+    <div class="art">
+      <svg width="760" height="400" viewBox="0 0 760 400" aria-hidden="true">
+        <rect x="14" y="14" width="740" height="380" rx="20" fill="#12201D" opacity=".08"/>
+        <rect x="4" y="4" width="740" height="380" rx="20" fill="#fff" stroke="#12201D" stroke-opacity=".2" stroke-width="2"/>
+        <g font-family="Plus Jakarta Sans" font-weight="700" font-size="40" fill="#12201D">
+          <text x="50" y="82">Top</text><text x="50" y="164">Bottom</text><text x="50" y="246">Left</text><text x="50" y="328">Right</text>
+        </g>
+        <g fill="#F6F8F5" stroke="#12201D" stroke-opacity=".35" stroke-width="2">
+          <rect x="400" y="36" width="300" height="64" rx="12"/><rect x="400" y="118" width="300" height="64" rx="12"/>
+          <rect x="400" y="200" width="300" height="64" rx="12" fill="#FFE45C" stroke="#12201D" stroke-opacity=".8"/>
+          <rect x="400" y="282" width="300" height="64" rx="12"/>
+        </g>
+        <g font-family="IBM Plex Mono" font-weight="700" font-size="40" fill="#12201D">
+          <text x="426" y="80">3 cm</text><text x="426" y="162">3 cm</text><text x="426" y="244">4 cm</text><text x="426" y="326">3 cm</text>
+        </g>
+      </svg>
+    </div>
+    <div class="note">Angka di atas hanya contoh umum.</div>
+  </div>
+</section>
+
+<!-- 7 preview + checklist -->
+<section class="slide" id="s7">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">07/08</span></div>
+  <div class="body">
+    <div class="row"><div class="num">5</div><h2>Lihat preview sebelum cetak</h2></div>
+    <div class="chk">
+      <div><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#0E5C4E"/><path d="M18 33 L28 43 L47 22" fill="none" stroke="#F6F8F5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>Margin sesuai buku pedoman</div>
+      <div><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#0E5C4E"/><path d="M18 33 L28 43 L47 22" fill="none" stroke="#F6F8F5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>Margin kiri cukup untuk jilid</div>
+      <div><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#0E5C4E"/><path d="M18 33 L28 43 L47 22" fill="none" stroke="#F6F8F5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>Teks tidak terpotong di tepi</div>
+      <div><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="#0E5C4E"/><path d="M18 33 L28 43 L47 22" fill="none" stroke="#F6F8F5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>Nomor halaman tidak menabrak margin</div>
+    </div>
+    <p style="font-size:42px">Simpan postingan ini sebagai pengingat sebelum mencetak.</p>
+  </div>
+</section>
+
+<!-- 8 penutup -->
+<section class="slide dark" id="s8">
+  <div class="top"><span class="brand"><i></i>Rapihin Skripsi</span><span class="pg">08/08</span></div>
+  <div class="body" style="align-items:center;text-align:center;gap:44px">
+    <svg width="230" height="310" viewBox="0 0 230 310" aria-hidden="true">
+      <rect x="0" y="0" width="230" height="310" rx="16" fill="#F6F8F5"/>
+      <path d="M16 0 H48 V310 H16 A16 16 0 0 1 0 294 V16 A16 16 0 0 1 16 0 Z" fill="#FFE45C"/>
+      <g fill="#12201D"><rect x="72" y="48" width="96" height="14" rx="7"/><rect x="72" y="92" width="136" height="9" rx="4"/><rect x="72" y="116" width="136" height="9" rx="4"/><rect x="72" y="140" width="136" height="9" rx="4"/><rect x="72" y="164" width="84" height="9" rx="4"/><rect x="72" y="204" width="136" height="9" rx="4"/><rect x="72" y="228" width="136" height="9" rx="4"/></g>
+      <circle cx="208" cy="292" r="34" fill="#FFE45C" stroke="#0E5C4E" stroke-width="6"/>
+      <path d="M192 294 L204 306 L226 280" fill="none" stroke="#12201D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div style="font-family:'Bricolage Grotesque';font-weight:800;font-size:104px;letter-spacing:-.02em;line-height:1">Rapihin Skripsi</div>
+    <p style="font-weight:700;font-size:50px;line-height:1.28">Kamu yang menulis,<br>kami yang <mark>merapikan.</mark></p>
+    <p style="font-weight:600;font-size:44px">Mau dirapikan? Kirim DM kami.</p>
+  </div>
+</section>
+
+</body>
+</html>

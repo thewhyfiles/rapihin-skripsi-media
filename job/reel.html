@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rapihin Skripsi - Reels margin</title>
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:700;src:url(fonts/bricolage-grotesque-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-weight:800;src:url(fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:500;src:url(fonts/plus-jakarta-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:600;src:url(fonts/plus-jakarta-sans-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:700;src:url(fonts/plus-jakarta-sans-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Plus Jakarta Sans";font-weight:800;src:url(fonts/plus-jakarta-sans-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:600;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:700;src:url(fonts/ibm-plex-mono-latin-700-normal.woff2) format("woff2")}
+:root{--green:#0E5C4E;--stab:#FFE45C;--ink:#12201D;--red:#C23B22;--blue:#3B82B0;--bg:#F6F8F5}
+*{box-sizing:border-box}
+html,body{margin:0;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:var(--bg);font-family:"Plus Jakarta Sans",sans-serif;color:var(--ink)}
+svg{position:absolute;left:0;top:0}
+.abs{position:absolute;left:0;top:0;opacity:0;white-space:nowrap}
+#title{left:0;width:1080px;text-align:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:76px;line-height:1.06;letter-spacing:-.01em;white-space:normal}
+mark{background:var(--stab);color:var(--ink);padding:0 .14em;border-radius:.16em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+#brandtag{left:0;width:1080px;text-align:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:42px;color:var(--green);letter-spacing:-.005em}
+#brandtag i{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--stab);margin-right:14px;vertical-align:middle;box-shadow:0 0 0 3px var(--green) inset}
+.pill{font-family:"IBM Plex Mono";font-weight:700;font-size:38px;color:#fff;background:var(--blue);border-radius:30px;width:118px;height:60px;line-height:60px;text-align:center;letter-spacing:-.02em}
+.pill.on{background:var(--stab);color:var(--ink);box-shadow:0 0 0 4px var(--ink)}
+.tag{font-family:"Plus Jakarta Sans";font-weight:800;font-size:26px;letter-spacing:.14em;color:var(--ink)}
+#callout{left:0;width:1080px;text-align:center;top:1262px}
+#callout span{display:inline-block;font-weight:800;font-size:38px;padding:16px 34px;border-radius:40px;line-height:1.15}
+.c-ink{background:var(--ink);color:var(--bg)}
+.c-stab{background:var(--stab);color:var(--ink)}
+.c-red{background:var(--red);color:#fff}
+.c-green{background:var(--green);color:var(--bg)}
+#note{left:0;width:1080px;text-align:center;font-weight:600;font-size:36px;line-height:1.3}
+#note b{font-family:"IBM Plex Mono";font-weight:700}
+#wordmark{left:0;width:1080px;text-align:center;font-family:"Bricolage Grotesque";font-weight:800;font-size:108px;letter-spacing:-.02em;color:var(--bg)}
+#tag1,#tag2{left:0;width:1080px;text-align:center;font-weight:700;font-size:50px;line-height:1.25;color:var(--bg)}
+#foot{left:0;width:1080px;text-align:center;font-weight:500;font-size:30px;color:var(--bg)}
+#sub{position:absolute;left:0;width:1080px;top:1380px;height:170px;display:flex;align-items:center;justify-content:center;opacity:0}
+#sub div{max-width:960px;text-align:center;font-weight:800;font-size:52px;line-height:1.22;color:var(--bg);background:rgba(18,32,29,.93);padding:18px 40px 20px;border-radius:32px}
+#sub mark{padding:0 .12em}
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="gutterGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="112" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="0.22" stop-color="#fff" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="1"/>
+    </linearGradient>
+    <mask id="gutterMask" maskUnits="userSpaceOnUse" x="-10" y="0" width="620" height="832">
+      <rect x="-10" y="0" width="620" height="832" fill="url(#gutterGrad)"/>
+    </mask>
+    <linearGradient id="shadeGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="150" y2="0">
+      <stop offset="0" stop-color="#12201D" stop-opacity="0.55"/>
+      <stop offset="0.45" stop-color="#12201D" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#12201D" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="paperClip"><rect x="0" y="0" width="588" height="832" rx="6"/></clipPath>
+    <clipPath id="iconClip"><rect x="0" y="0" width="260" height="350" rx="16"/></clipPath>
+  </defs>
+
+  <!-- dot grid -->
+  <g id="grid" opacity="0.5"></g>
+
+  <!-- paper group -->
+  <g id="paper">
+    <rect x="8" y="14" width="588" height="832" rx="6" fill="#12201D" opacity="0.10"/>
+    <rect x="0" y="0" width="588" height="832" rx="6" fill="#FFFFFF" stroke="#12201D" stroke-opacity="0.14" stroke-width="2"/>
+    <g clip-path="url(#paperClip)">
+      <g id="tints">
+        <rect id="tintL" x="0" y="0" width="112" height="832" fill="#3B82B0" opacity="0"/>
+        <rect id="tintT" x="112" y="0" width="392" height="84" fill="#3B82B0" opacity="0"/>
+        <rect id="tintR" x="504" y="0" width="84" height="832" fill="#3B82B0" opacity="0"/>
+        <rect id="tintB" x="112" y="748" width="392" height="84" fill="#3B82B0" opacity="0"/>
+      </g>
+      <rect id="yel" x="0" y="0" width="112" height="0" fill="#FFE45C" opacity="0"/>
+      <g mask="url(#gutterMask)"><g id="bars" fill="#12201D"></g></g>
+      <rect id="shade" x="0" y="0" width="150" height="832" fill="url(#shadeGrad)" opacity="0"/>
+    </g>
+    <g id="spine" opacity="0">
+      <rect x="-40" y="-6" width="40" height="844" rx="6" fill="#0E5C4E"/>
+      <rect x="-40" y="-6" width="12" height="844" rx="4" fill="#0A453A"/>
+      <g id="stitches" stroke="#FFE45C" stroke-width="5" stroke-linecap="round"></g>
+    </g>
+    <g id="dims" fill="none" stroke="#3B82B0" stroke-width="5" stroke-linecap="round">
+      <path id="dL" d="M-52 416 H112 M0 392 V440 M112 392 V440" pathLength="1"/>
+      <path id="dT" d="M294 0 V84 M270 0 H318 M270 84 H318" pathLength="1"/>
+      <path id="dR" d="M504 416 H640 M504 392 V440 M588 392 V440" pathLength="1"/>
+      <path id="dB" d="M294 748 V832 M270 748 H318 M270 832 H318" pathLength="1"/>
+    </g>
+    <g id="badge" opacity="0" transform="translate(56 416)">
+      <circle r="40" fill="#0E5C4E" stroke="#12201D" stroke-width="5"/>
+      <path d="M-17 2 L-5 15 L19 -13" fill="none" stroke="#F6F8F5" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- handbook -->
+  <g id="book" opacity="0">
+    <ellipse cx="545" cy="1180" rx="270" ry="22" fill="#12201D" opacity="0.12"/>
+    <rect x="304" y="472" width="520" height="700" rx="12" fill="#FFFFFF" stroke="#12201D" stroke-opacity="0.2" stroke-width="2"/>
+    <g stroke="#12201D" stroke-opacity="0.16" stroke-width="2">
+      <path d="M800 480 V1166 M790 480 V1166 M780 480 V1166"/>
+    </g>
+    <rect x="280" y="450" width="520" height="700" rx="14" fill="#0E5C4E"/>
+    <rect x="280" y="450" width="38" height="700" rx="10" fill="#0A453A"/>
+    <path d="M706 450 H752 V600 L729 576 L706 600 Z" fill="#FFE45C"/>
+    <text x="352" y="640" font-family="Plus Jakarta Sans" font-weight="800" font-size="28" letter-spacing="6" fill="#FFE45C">BUKU PEDOMAN</text>
+    <text x="350" y="752" font-family="Bricolage Grotesque" font-weight="800" font-size="80" fill="#F6F8F5">Penulisan</text>
+    <text x="350" y="846" font-family="Bricolage Grotesque" font-weight="800" font-size="80" fill="#F6F8F5">Skripsi</text>
+    <rect x="352" y="886" width="130" height="10" rx="5" fill="#FFE45C"/>
+    <text x="352" y="1096" font-family="Plus Jakarta Sans" font-weight="600" font-size="32" fill="#F6F8F5">Kampus kamu</text>
+    <g id="bookBadge" opacity="0" transform="translate(800 470)">
+      <circle r="66" fill="#FFE45C" stroke="#12201D" stroke-width="7"/>
+      <path d="M-26 4 L-8 24 L28 -20" fill="none" stroke="#12201D" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- end card -->
+  <circle id="wipe" cx="540" cy="1000" r="0" fill="#0E5C4E"/>
+  <g id="icon" opacity="0">
+    <g transform="translate(-130 -175)">
+      <rect x="0" y="0" width="260" height="350" rx="16" fill="#F6F8F5"/>
+      <g clip-path="url(#iconClip)"><rect x="0" y="0" width="54" height="350" fill="#FFE45C"/></g>
+      <g fill="#12201D">
+        <rect x="82" y="54" width="110" height="16" rx="8"/>
+        <rect x="82" y="104" width="150" height="10" rx="5"/>
+        <rect x="82" y="134" width="150" height="10" rx="5"/>
+        <rect x="82" y="164" width="150" height="10" rx="5"/>
+        <rect x="82" y="194" width="96" height="10" rx="5"/>
+        <rect x="82" y="238" width="150" height="10" rx="5"/>
+        <rect x="82" y="268" width="150" height="10" rx="5"/>
+      </g>
+      <g transform="translate(236 332)">
+        <circle r="38" fill="#FFE45C" stroke="#0E5C4E" stroke-width="6"/>
+        <path d="M-16 2 L-5 14 L17 -12" fill="none" stroke="#12201D" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+  </g>
+</svg>
+
+<div id="title" class="abs">Kenapa <mark>margin kiri</mark><br>skripsi lebih lebar?</div>
+<div id="brandtag" class="abs"><i></i>Rapihin Skripsi</div>
+
+<div id="pL" class="abs pill">4 cm</div>
+<div id="pT" class="abs pill">3 cm</div>
+<div id="pR" class="abs pill">3 cm</div>
+<div id="pB" class="abs pill">3 cm</div>
+<div id="gL" class="abs tag">KIRI</div>
+<div id="gT" class="abs tag">ATAS</div>
+<div id="gR" class="abs tag">KANAN</div>
+<div id="gB" class="abs tag">BAWAH</div>
+
+<div id="callout" class="abs"><span></span></div>
+<div id="note" class="abs"><b>4-3-3-3 cm</b> hanya contoh umum.<br>Ukuran akhir ikut buku pedoman kampus kamu.</div>
+
+<div id="wordmark" class="abs">Rapihin Skripsi</div>
+<div id="tag1" class="abs">Kamu yang menulis,</div>
+<div id="tag2" class="abs">kami yang <mark>merapikan.</mark></div>
+<div id="foot" class="abs">Merapikan format skripsi, tesis, dan laporan KP.</div>
+
+<div id="sub"><div></div></div>
+</div>
+
+<script>
+const NS="http://www.w3.org/2000/svg";
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const P=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const ei=x=>x*x*x;
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const eb=x=>{const c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const lerp=(a,b,k)=>a+(b-a)*k;
+
+// timeline anchors (global seconds)
+const S=[0,4.4,10.8,17.8,23.3,28.0];
+const A=[0.3,4.6,11.0,18.0,23.6];
+const PX=246, PY=390; // paper origin
+
+// dot grid
+(()=>{const g=$("grid");for(let x=60;x<1080;x+=60)for(let y=60;y<1920;y+=60){const c=document.createElementNS(NS,"circle");c.setAttribute("cx",x);c.setAttribute("cy",y);c.setAttribute("r",2);c.setAttribute("fill","#12201D");c.setAttribute("opacity","0.07");g.appendChild(c)}})();
+
+// stitches on spine
+(()=>{const g=$("stitches");for(let y=60;y<832;y+=72){const l=document.createElementNS(NS,"path");l.setAttribute("d",`M-20 ${y} V${y+30}`);g.appendChild(l)}})();
+
+// text bars
+const bars=[];
+(()=>{
+  const g=$("bars");let y=84,i=0;
+  const add=(h,w0,kind)=>{
+    const r=document.createElementNS(NS,"rect");r.setAttribute("rx",h/2);g.appendChild(r);
+    bars.push({r,y,h,w0,kind});i++;
+  };
+  add(20,0.62,"title");y+=52;
+  const paras=[5,6,4,3];
+  for(const n of paras){
+    for(let l=0;l<n;l++){
+      if(y+12>748)break;
+      const last=l===n-1;
+      const w=last?0.52+0.1*((i*7)%3)/2:0.9+0.1*(((i*37)%10)/10);
+      add(12,w,"line");y+=32;
+    }
+    y+=20;
+  }
+})();
+function setBars(k){ // k: 0 = proper margin(112), 1 = narrow (28)
+  const x0=lerp(112,28,k), W=lerp(392,476,k);
+  for(const b of bars){
+    if(b.kind==="title"){
+      const w=W*b.w0, x=x0+(W-w)/2;
+      b.r.setAttribute("x",x);b.r.setAttribute("y",b.y);b.r.setAttribute("width",w);b.r.setAttribute("height",b.h);
+    }else{
+      b.r.setAttribute("x",x0);b.r.setAttribute("y",b.y);b.r.setAttribute("width",W*b.w0);b.r.setAttribute("height",b.h);
+    }
+  }
+}
+
+// subtitle chunks [relStart, relEnd, text]
+const SUBS=[
+ [A[0],[[0.10,1.85,"Why is the *left margin*"],[1.85,2.55,"of your thesis"],[2.55,3.80,"*bigger* than the rest?"]]],
+ [A[1],[[0.0,1.65,"Because it gets *bound*."],[1.75,2.75,"The extra space keeps"],[2.75,4.20,"your text from disappearing"],[4.20,5.45,"into the *spine*."]]],
+ [A[2],[[0.10,1.35,"A common example is"],[1.35,3.00,"*four*, *three*, *three*, *three*"],[3.00,3.80,"centimeters."],[4.00,5.90,"Left, top, right, bottom."]]],
+ [A[3],[[0.0,1.65,"But your campus *handbook*"],[1.65,2.75,"has the final say."],[2.75,4.30,"Always check it *first*."]]],
+ [A[4],[[0.05,1.45,"You write the thesis."],[1.45,2.60,"We make it *neat*."]]],
+];
+const subs=[];
+for(const [a,ch] of SUBS)for(const [s,e,t] of ch)subs.push({s:a+s,e:a+e,t:t.replace(/\*(.+?)\*/g,(m,w)=>`<mark>${w}</mark>`).replace(/<mark>(.*?)<\/mark>/g,(m,w)=>m)});
+let lastSub=-2;
+function setSub(t){
+  let idx=-1;for(let i=0;i<subs.length;i++)if(t>=subs[i].s&&t<subs[i].e){idx=i;break}
+  const el=$("sub");
+  if(idx!==lastSub){lastSub=idx;if(idx>=0)el.firstElementChild.innerHTML=subs[idx].t}
+  if(idx<0){el.style.opacity=0;return}
+  const k=eo(P(t,subs[idx].s,subs[idx].s+0.12));
+  el.style.opacity=k;
+  el.style.transform=`translateY(${(1-k)*14}px) scale(${lerp(.97,1,k)})`;
+}
+
+// callouts [a,b,text,cls]
+const CALL=[
+ [4.95,6.35,"Skripsi dijilid di sisi kiri","c-ink"],
+ [6.45,7.60,"Ruang ekstra untuk jilid","c-stab"],
+ [7.80,9.05,"Tanpa margin: teks tenggelam","c-red"],
+ [9.20,10.70,"Dengan margin: teks aman","c-green"],
+ [11.30,17.50,"Contoh umum, ukuran dalam cm","c-ink"],
+];
+let lastCall=-2;
+function setCall(t){
+  const el=$("callout");let idx=-1;
+  for(let i=0;i<CALL.length;i++)if(t>=CALL[i][0]&&t<CALL[i][1]){idx=i;break}
+  if(idx!==lastCall){lastCall=idx;if(idx>=0){el.firstElementChild.textContent=CALL[idx][2];el.firstElementChild.className=CALL[idx][3]}}
+  if(idx<0){el.style.opacity=0;return}
+  const [a,b]=CALL[idx];
+  const kin=eb(P(t,a,a+0.3)), kout=1-P(t,b-0.18,b);
+  el.style.opacity=clamp(kin*1.2,0,1)*kout;
+  el.style.transform=`translateY(${(1-clamp(kin,0,1.2))*22}px) scale(${lerp(.92,1,clamp(kin,0,1.1))})`;
+}
+
+function place(id,gx,gy,op,sc=1,dy=0){ // center at global gx,gy
+  const el=$(id);const w=el.offsetWidth,h=el.offsetHeight;
+  el.style.opacity=op;
+  el.style.transform=`translate(${gx-w/2}px,${gy-h/2+dy}px) scale(${sc})`;
+}
+
+function seek(t){
+  // ---------- paper transform ----------
+  const intro=eo(P(t,0,0.6));
+  const exit=eio(P(t,17.85,18.6));
+  const px=PX-exit*900, py=PY+(1-intro)*36;
+  const psc=lerp(.97,1,intro);
+  $("paper").setAttribute("transform",`translate(${px} ${py}) translate(294 416) scale(${psc}) translate(-294 -416)`);
+  $("paper").setAttribute("opacity",1-P(t,17.9,18.5)*0.0);
+
+  // ---------- title / brand tag ----------
+  const tOut=P(t,3.85,4.35);
+  const tIn=P(t,0,0.0001);
+  place("title",540,255,(1-tOut),1,(-tOut)*18+(1-eo(P(t,0,0.5)))*20);
+  const bt=P(t,4.4,5.0)*(1-P(t,17.9,18.3))+0; // brand tag in S2..S4
+  const btE=P(t,4.4,5.0);
+  const btFinal=btE*(1-P(t,23.3,23.7));
+  place("brandtag",540,222,btFinal,1,(1-eo(btE))*-14);
+
+  // ---------- bars position ----------
+  // narrow k: drifts left at 7.5-8.3, returns 8.9-9.7
+  let k=0;
+  k=eio(P(t,7.5,8.3))*(1-eb(P(t,8.9,9.7)>0?P(t,8.9,9.7):0)*0);
+  if(t>=8.9)k=1-eio(P(t,8.9,9.7));
+  if(t<7.5)k=0;
+  setBars(k);
+
+  // text dim in S3
+  const dim=P(t,11.0,11.6)*(1-P(t,17.7,17.8));
+  $("bars").setAttribute("opacity",lerp(1,.30,dim));
+
+  // ---------- yellow sweep (S1) / S2 glow ----------
+  let yelH=0,yelO=0;
+  const sw=eio(P(t,0.9,1.9));
+  if(t<4.4){yelH=832*sw;yelO=lerp(1,.55,P(t,3.0,3.9))*(1-P(t,3.9,4.4)*1)}
+  else if(t>=6.45&&t<7.7){yelH=832;yelO=eo(P(t,6.45,6.9))*(1-P(t,7.4,7.7))*0.9}
+  $("yel").setAttribute("height",yelH);$("yel").setAttribute("opacity",yelO);
+
+  // ---------- tints ----------
+  let tOp=[0,0,0,0];
+  // S1 hint: other margins tinted for "the rest"
+  const hint=eo(P(t,2.5,3.1))*(1-P(t,3.9,4.4));
+  tOp=[0,hint*.14,hint*.14,hint*.14];
+  // S3 dims tints
+  const dT=[12.4,12.85,13.30,13.70];
+  const dP=dT.map(a=>eo(P(t,a,a+0.45)));
+  const exitS3=1-P(t,17.7,18.1);
+  const s3=P(t,10.9,11.0)>0&&t<18.2;
+  if(t>=11){tOp=[dP[0]*.16,dP[1]*.16,dP[2]*.16,dP[3]*.16].map(v=>v*exitS3)}
+  const ids=["tintL","tintT","tintR","tintB"];
+  ids.forEach((id,i)=>$(id).setAttribute("opacity",tOp[i]));
+
+  // ---------- spine ----------
+  const spIn=eo(P(t,4.55,5.25)), spOut=eio(P(t,10.85,11.35));
+  const sp=spIn*(1-spOut);
+  $("spine").setAttribute("opacity",sp);
+  $("spine").setAttribute("transform",`translate(${(1-spIn)*-60 - spOut*50} 0)`);
+  $("shade").setAttribute("opacity",eo(P(t,4.9,5.6))*(1-spOut));
+
+  // ---------- check badge (S2) ----------
+  const bIn=eb(P(t,9.5,10.0));
+  const bOut=1-P(t,10.6,10.9);
+  $("badge").setAttribute("opacity",clamp(bIn,0,1)*bOut);
+  $("badge").setAttribute("transform",`translate(56 416) scale(${clamp(bIn,0,1.15)})`);
+
+  // ---------- dimensions ----------
+  const dims=["dL","dT","dR","dB"];
+  dims.forEach((id,i)=>{
+    const p=eio(P(t,dT[i],dT[i]+0.4));
+    const el=$(id);
+    el.setAttribute("stroke-dasharray","1 1.0001");
+    el.setAttribute("stroke-dashoffset",1-p);
+    el.setAttribute("opacity",p>0?exitS3:0);
+  });
+  // pills + tags
+  const centers=[[150,806],[930,806],[PX+294+92,PY+42],[PX+294+92,PY+832-42]];
+  const pillIds=["pL","pR","pT","pB"]; // order: L,R,T,B for placement; times follow L,T,R,B
+  const order={pL:0,pT:1,pR:2,pB:3};
+  const place2={pL:[150,806],pT:[PX+294+96,PY+42],pR:[930,806],pB:[PX+294+96,PY+832-42]};
+  const tagPos={gL:[150,742],gT:[PX+294-84,PY+42],gR:[930,742],gB:[PX+294-92,PY+832-42]};
+  const tagFor={pL:"gL",pT:"gT",pR:"gR",pB:"gB"};
+  const hl=[15.08,15.52,15.97,16.30]; // voice: Left, top, right, bottom
+  for(const id of pillIds){
+    const i=order[id];
+    const pop=eb(P(t,dT[i],dT[i]+0.4));
+    const vis=clamp(pop,0,1.1)*exitS3;
+    const on=t>=hl[i]&&t<hl[i]+0.5;
+    const el=$(id);el.classList.toggle("on",on);
+    const pulse=on?1+0.12*Math.sin(Math.PI*P(t,hl[i],hl[i]+0.5)):1;
+    const [gx,gy]=place2[id];
+    place(id,gx,gy,clamp(pop*1.5,0,1)*exitS3,clamp(pop,0,1.15)*pulse);
+    const tg=tagFor[id];const [tx,ty]=tagPos[tg];
+    place(tg,tx,ty,clamp((P(t,dT[i]+0.1,dT[i]+0.5)),0,1)*exitS3);
+  }
+
+  // ---------- handbook (S4) ----------
+  const bk=eb(P(t,18.1,18.9));
+  const bookOut=1;
+  const bx=lerp(900,0,eo(P(t,18.1,18.9)));
+  const bs=clamp(bk,0,1.05);
+  $("book").setAttribute("opacity",P(t,18.1,18.4));
+  $("book").setAttribute("transform",`translate(${bx} 0) rotate(${lerp(6,0,eo(P(t,18.1,18.9)))} 540 800)`);
+  const stamp=eb(P(t,20.9,21.4));
+  $("bookBadge").setAttribute("opacity",clamp(stamp*1.5,0,1));
+  $("bookBadge").setAttribute("transform",`translate(800 470) scale(${clamp(stamp,0,1.2)}) rotate(${(1-clamp(stamp,0,1))*-25})`);
+  const nIn=eo(P(t,19.9,20.5));
+  place("note",540,1290,nIn*(1-P(t,23.2,23.5)),1,(1-nIn)*20);
+  // note needs fixed top (placed centered by place); recompute with top baseline
+
+  // ---------- wipe + end card ----------
+  const wp=eio(P(t,23.3,24.05));
+  $("wipe").setAttribute("r",2300*wp);
+  const iconIn=eb(P(t,24.0,24.6));
+  $("icon").setAttribute("opacity",clamp(iconIn*1.6,0,1));
+  $("icon").setAttribute("transform",`translate(540 650) scale(${clamp(iconIn,0,1.1)})`);
+  const w1=eo(P(t,24.25,24.8));
+  place("wordmark",540,945,w1,1,(1-w1)*26);
+  const t1=eo(P(t,24.6,25.1));place("tag1",540,1066,t1,1,(1-t1)*18);
+  const t2=eo(P(t,25.15,25.65));place("tag2",540,1132,t2,1,(1-t2)*18);
+  const ft=eo(P(t,25.9,26.4));place("foot",540,1236,ft*.9,1,(1-ft)*12);
+
+  // hide scene-4 note after wipe so it doesn't peek
+  setCall(t);setSub(t);
+}
+window.seek=seek;
+window.__S=S;window.__A=A;
+window.__ready=document.fonts.ready.then(()=>Promise.all([
+  document.fonts.load('800 76px "Bricolage Grotesque"'),
+  document.fonts.load('700 38px "Bricolage Grotesque"'),
+  document.fonts.load('500 30px "Plus Jakarta Sans"'),
+  document.fonts.load('600 30px "Plus Jakarta Sans"'),
+  document.fonts.load('700 30px "Plus Jakarta Sans"'),
+  document.fonts.load('800 30px "Plus Jakarta Sans"'),
+  document.fonts.load('700 30px "IBM Plex Mono"'),
+]));
+</script>
+</body>
+</html>

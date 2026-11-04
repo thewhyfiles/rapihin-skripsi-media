@@ -1,0 +1,35 @@
+name: render
+on:
+  push:
+    branches: [main]
+    paths: ['job/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: render
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: md5sum job/* tools/*.js tools/*.py tools/build.sh || true
+      - run: bash tools/build.sh
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+      - name: Publish outputs to branch latest
+        run: |
+          cd out
+          git init -q -b latest
+          git add -A
+          git -c user.name=rapihin-bot -c user.email=bot@users.noreply.github.com commit -qm "render ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" latest
+          git rev-parse HEAD
+          find . -type f -not -path './.git/*' -exec ls -l {} \;

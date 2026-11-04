@@ -1,0 +1,11 @@
+{
+  "name": "rapihin-media-tools",
+  "private": true,
+  "dependencies": {
+    "playwright": "^1.49.0",
+    "@fontsource/bricolage-grotesque": "^5.1.0",
+    "@fontsource/plus-jakarta-sans": "^5.1.0",
+    "@fontsource/ibm-plex-mono": "^5.1.0",
+    "@fontsource/tinos": "^5.1.0"
+  }
+}

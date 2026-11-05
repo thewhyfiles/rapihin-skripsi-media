@@ -22,6 +22,7 @@ curl -sSL --fail -o tools/model/voices-v1.0.bin https://github.com/thewh1teagle/
 # 4. Render
 python3 tools/tts.py
 node tools/render_reel.js
+node tools/render_cover.js
 node tools/render_carousel.js
 
 # 5. Manifest

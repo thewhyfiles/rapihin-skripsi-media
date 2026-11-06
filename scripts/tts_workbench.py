@@ -55,11 +55,11 @@ print('AUDIO_URL', url)
 
 # Opsional: commit langsung dari sini (hemat token, tanpa menyalin ulang timing). Isi COMMIT untuk mengaktifkan.
 COMMIT = None   # {'owner': 'thewhyfiles', 'repo': 'thewhyfiles-media', 'branch': 'remotion-build',
-                #  'extra': {'job/meta.json': '<json str>', 'job/scenes.json': '<json str>'}}
+                #  'message': 'Reel <slug>', 'extra': {'job/meta.json': '<json str>', 'job/scenes.json': '<json str>'}}
 if COMMIT:
     up = [{'path': 'job/timing.json', 'content': json.dumps(timing, ensure_ascii=False)},
           {'path': 'job/audio.url', 'content': url}]
     up += [{'path': p, 'content': c} for p, c in COMMIT['extra'].items()]
     r, e = run_composio_tool('GITHUB_COMMIT_MULTIPLE_FILES', {'owner': COMMIT['owner'], 'repo': COMMIT['repo'], 'branch': COMMIT['branch'],
-                             'message': 'job: ' + json.loads(COMMIT['extra'].get('job/meta.json', '{}')).get('title', 'reel'), 'upserts': up})
+                             'message': COMMIT.get('message') or ('job: ' + json.loads(COMMIT['extra'].get('job/meta.json', '{}')).get('title', 'reel')), 'upserts': up})
     print('COMMIT', e or 'ok')

@@ -17,9 +17,16 @@ Publikasi ke Instagram tetap lewat Composio (ambil file dari `reel-remotion`, at
 ```json
 {"brand":"twf|rapihin","title":"...","fileNo":"BERKAS No. 002","source":"sumber: Penulis, tahun",
  "publishBranch":"reel-remotion",
- "cover":{"kicker":"The Why Files ID","lines":["Baris 1","Baris 2","Baris sorot"],"sub":"label kecil"}}
+ "cover":{"kicker":"The Why Files ID","lines":["Baris 1","Baris 2","Baris sorot"],"sub":"label kecil","art":["bear"],"badge":"Fakta unik"}}
 ```
-Baris terakhir `cover.lines` disorot (aksen/stabilo).
+**Cover = thumbnail berilustrasi** (sinar + ilustrasi besar di cakram + badge + hook tebal), bukan teks saja. WAJIB: `cover.art` (1 nama ilustrasi, atau 2) dan `cover.badge` (≤ 14 karakter, mis. "Fakta unik", "Tips skripsi", "Jarang tahu"). `cover.lines` 2–3 baris, tiap baris ≤ 15 karakter, hook berupa pertanyaan/paradoks; baris terakhir disorot.
+
+## Ilustrasi (WAJIB, target ≥ 60% adegan)
+Pustaka SVG animasi di `src/art.tsx` (muncul pop-in + gerak idle, warna ikut brand): `brain, bulb, clock, magnifier, doc (v: check|cross), book, lock, eye, thought (v: karakter), person (v: wave), bear, gear, chart (v: up|down), page (v: label kecil), laptop, cap, pen, warning, check, cross, loop, phone, coin (v: teks), heart, shield, question, ruler`.
+- Field `art` di adegan MANA PUN: `"art":["brain"]` (1 ilustrasi di tengah atas), 2–3 nama = berjajar. Konten adegan otomatis dirapatkan ke bawah. Bentuk objek: `{"name":"chart","v":"down","at":5}` (`at` = indeks kata pemicu).
+- Tipe **`hero`** = ilustrasi BESAR di tengah + 1–2 baris teks (`lines[]`, `hl[]`, `label`, `art`). Pakai untuk ≥ 3–4 beat penting (hook, momen "kenapa", inti/solusi). Jangan hero berturut-turut > 2.
+- Pilih ilustrasi yang BERMAKNA bagi kalimat beat (mis. lupa/pikiran → `brain`, waktu → `clock`, riset → `magnifier`, data → `chart`, ide/solusi → `bulb`, aturan/larangan → `shield`/`lock`/`warning`, siklus → `loop`). Nama yang tidak ada ditolak `mkprops` (job gagal).
+- Gerak tambahan otomatis: partikel melayang di latar, sapuan aksen di awal tiap beat, halo berputar.
 
 ## `job/scenes.json` — array, panjang = jumlah beat
 Semua adegan punya `label` (kicker kecil di atas, opsional) dan `at` (opsional): daftar **indeks kata** pada beat itu yang memicu kemunculan item ke-0, ke-1, … Tanpa `at`, item disebar rata sepanjang kalimat. Visual muncul 0,1 dtk SEBELUM kata.
@@ -37,6 +44,9 @@ Semua adegan punya `label` (kicker kecil di atas, opsional) dan `at` (opsional):
 | `crowd` | `total` (maks 60), `mark`, `caption`, `sub` | grid orang (sampel/peserta) |
 | `bigword` | `word`, `caption[]`, `tone` | satu kata/simbol raksasa ("?", "≠") |
 | `closer` | `lines[]`, `hl[]`, `stamp` | penutup + handle brand |
+| `hero` | `art` (nama/array/objek), `lines[]` (1–2), `hl[]`, `label`, `artY`, `artS` | ilustrasi besar + teks pendek |
+
+Semua tipe menerima `art` dan `artY`/`artS` (override posisi/skala).
 
 Aturan: teks per baris sekitar 22 karakter atau kurang untuk `statement`/`closer` (otomatis mengecil bila lebih panjang); konten utama otomatis di zona aman (y 260–1290), caption di y 1318–1468. Angka di layar harus ada di tabel sumber. Parafrase diberi label. Tanpa logo/karakter milik kanal lain. Tanpa emoji (font tidak memuatnya).
 

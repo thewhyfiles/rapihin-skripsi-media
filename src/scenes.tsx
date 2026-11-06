@@ -1,6 +1,7 @@
 import React from 'react';
 import {useJob, CX, clamp, lin, ramp, pop, fmt, triggers, fit} from './core';
 import {Tx, Card, Person, Stamp, Label} from './ui';
+import {ArtLayer} from './art';
 
 export type SceneProps = {t: number; b: number; s: any};
 
@@ -378,7 +379,26 @@ export const Closer: React.FC<SceneProps> = ({t, b, s}) => {
   );
 };
 
+/* ---------- hero: ilustrasi besar + 1-2 baris teks ---------- */
+export const Hero: React.FC<SceneProps> = ({t, b, s}) => {
+  const {beats} = useJob();
+  const lines: string[] = (s.lines ?? []).map((l: string) => up(l, s.upper !== false));
+  const tr = triggers(beats, b, Math.max(1, lines.length), s.at);
+  const size = Math.min(s.size ?? 84, ...lines.map((l) => fit(l, 940, 88, 0.68)));
+  const y0 = (lines.length > 1 ? 1105 : 1150);
+  return (
+    <g>
+      {s.label && <Label t={t} at={0.05}>{up(s.label)}</Label>}
+      <ArtLayer t={t} b={b} art={s.art ?? 'question'} y={s.artY ?? 700} s={s.artS ?? (Array.isArray(s.art) && s.art.length > 1 ? 1.2 : 1.25)} />
+      {lines.map((l, i) => {
+        const p = ramp(t, tr[i], tr[i] + 0.35);
+        return <Em key={i} x={CX} y={y0 + i * size * 1.18} size={size} text={l} on={(s.hl ?? []).includes(i)} op={p} dy={(1 - p) * 30} />;
+      })}
+    </g>
+  );
+};
+
 export const SCENE_TYPES: Record<string, React.FC<SceneProps>> = {
   statement: Statement, bignumber: BigNumber, bars: Bars, versus: Versus, list: List,
-  doc: Doc, quote: Quote, timeline: Timeline, crowd: Crowd, bigword: BigWord, closer: Closer,
+  doc: Doc, quote: Quote, timeline: Timeline, crowd: Crowd, bigword: BigWord, closer: Closer, hero: Hero,
 };

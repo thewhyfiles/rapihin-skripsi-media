@@ -3,6 +3,7 @@ import {AbsoluteFill, useCurrentFrame, Audio, staticFile, delayRender, continueR
 import {Job, JobCtx, FPS, WIDTH, HEIGHT, clamp, durationOf, windowsOf, Ctx} from './core';
 import {SCENE_TYPES, Statement} from './scenes';
 import {Tx} from './ui';
+import {ArtLayer, ArtItem, hasArt} from './art';
 
 const useFonts = (job: Job) => {
   const [h] = useState(() => delayRender('fonts'));
@@ -90,12 +91,24 @@ const Scene: React.FC<{b: number; frame: number; spec: any; from: number; to: nu
   const flash = b > 1 ? Math.max(0, 1 - (frame - from + 3) / 4) * 0.18 : 0;
   const Comp = SCENE_TYPES[spec?.type] ?? Statement;
   const s = SCENE_TYPES[spec?.type] ? spec : {...spec, lines: spec?.lines ?? [String(spec?.text ?? '')]};
+  const extra = spec?.type !== 'hero' && hasArt(spec);
+  const K = 0.7; // konten dirapatkan ke bawah supaya ilustrasi punya ruang di atas
+  const lt0 = (frame - from) / FPS;
+  const sweep = b > 1 ? clamp(lt0 / 0.45) : 1;
   return (
     <AbsoluteFill style={{opacity: op}}>
       <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`} style={{position: 'absolute', inset: 0}}>
         <g transform={`translate(540 760) scale(${sc}) translate(-540 -760)`}>
-          <Comp t={t} b={b} s={s} />
+          <g transform={extra ? `translate(540 1290) scale(${K}) translate(-540 -1290)` : undefined}>
+            <Comp t={t} b={b} s={s} />
+          </g>
+          {extra && <ArtLayer t={t} b={b} art={spec.art} y={spec.artY} s={spec.artS} />}
         </g>
+        {sweep < 1 && (
+          <g opacity={(1 - sweep) * (ctxLight ? 0.35 : 0.5)}>
+            <polygon points={`${-300 + sweep * 1700},0 ${-60 + sweep * 1700},0 ${-360 + sweep * 1700},1920 ${-600 + sweep * 1700},1920`} fill={ctxLight ? P.accent : P.accent} />
+          </g>
+        )}
       </svg>
       {flash > 0 && <AbsoluteFill style={{background: ctxLight ? P.accent2 : '#fff', opacity: ctxLight ? flash * 0.5 : flash}} />}
     </AbsoluteFill>
@@ -103,7 +116,7 @@ const Scene: React.FC<{b: number; frame: number; spec: any; from: number; to: nu
 };
 
 const Background: React.FC<{frame: number}> = ({frame}) => {
-  const {P} = React.useContext(JobCtx);
+  const {P, light} = React.useContext(JobCtx);
   const drift = ((frame / FPS) * 14) % 60;
   return (
     <AbsoluteFill>
@@ -118,6 +131,20 @@ const Background: React.FC<{frame: number}> = ({frame}) => {
         </defs>
         <rect width={WIDTH} height={HEIGHT} fill="url(#vg)" />
         <rect width={WIDTH} height={HEIGHT} fill="url(#grid)" />
+        {Array.from({length: 16}, (_, i) => {
+          const sp = 18 + (i * 37) % 26;
+          const x0 = (i * 211) % 1080;
+          const y = 1700 - ((((i * 173) % 1700) + (frame / FPS) * sp) % 1500);
+          const x = x0 + Math.sin(frame / FPS * 0.8 + i) * 26;
+          const r = 8 + (i * 7) % 16;
+          const col = i % 3 === 0 ? P.accent : i % 3 === 1 ? P.accent2 : P.muted;
+          const op = (light ? 0.22 : 0.16) * (y > 200 && y < 1500 ? 1 : 0.3);
+          return i % 4 === 0
+            ? <g key={i} transform={`translate(${x} ${y}) rotate(${frame * 0.8 + i * 30})`} opacity={op * 1.6}><path d="M-14 0H14M0 -14V14" stroke={col} strokeWidth={5} strokeLinecap="round" /></g>
+            : i % 4 === 1
+            ? <circle key={i} cx={x} cy={y} r={r + 6} fill="none" stroke={col} strokeWidth={4} opacity={op * 1.5} />
+            : <circle key={i} cx={x} cy={y} r={r} fill={col} opacity={op} />;
+        })}
       </svg>
     </AbsoluteFill>
   );
@@ -164,32 +191,64 @@ export const Video: React.FC<{job: Job}> = ({job}) => {
 export const Cover: React.FC<{job: Job}> = ({job}) => {
   useFonts(job);
   const ctx = React.useMemo(() => mkCtx(job), [job]);
-  const {P, F} = ctx;
-  const cv = job.meta.cover ?? {lines: [job.meta.title ?? '']};
-  const lines = cv.lines;
-  const size = Math.min(150, ...lines.map((l) => (880 / Math.max(1, l.length * 0.64))));
-  const y0 = 860 - ((lines.length - 1) * size * 1.15) / 2;
-  const light = ctx.light;
+  const {P, F, light} = ctx;
+  const cv: any = job.meta.cover ?? {lines: [job.meta.title ?? '']};
+  const lines: string[] = cv.lines.map((l: string) => l.toUpperCase());
+  const size = Math.min(128, ...lines.map((l) => 930 / Math.max(1, l.length * 0.66)));
+  const lh = size * 1.12;
+  const yEnd = 1500; // baris terakhir berhenti di sini (aman untuk crop grid 3:4 -> y 240..1680)
+  const y0 = yEnd - (lines.length - 1) * lh;
+  const arts: any[] = (Array.isArray(cv.art) ? cv.art : [cv.art ?? 'question']).slice(0, 2);
+  const kick = (cv.kicker ?? job.brand.name).toUpperCase();
+  const kw = kick.length * 21 + 70;
+  const AX = 540, AY = 760;
+  const rays = Array.from({length: 18}, (_, i) => {
+    const a0 = (i / 18) * Math.PI * 2, a1 = ((i + 0.5) / 18) * Math.PI * 2, R = 1700;
+    return <polygon key={i} points={`${AX},${AY} ${AX + Math.cos(a0) * R},${AY + Math.sin(a0) * R} ${AX + Math.cos(a1) * R},${AY + Math.sin(a1) * R}`} fill={P.accent} opacity={light ? 0.3 : 0.11} />;
+  });
   return (
     <JobCtx.Provider value={ctx}>
       <AbsoluteFill style={{backgroundColor: P.bg}}>
-        <Background frame={0} />
+        <Background frame={20} />
         <AbsoluteFill>
           <svg width={WIDTH} height={HEIGHT} viewBox={`0 0 ${WIDTH} ${HEIGHT}`}>
-            <Tx x={540} y={y0 - size - 60} size={34} fill={P.muted} font={F.mono} weight={700} ls={8}>{(cv.kicker ?? job.brand.name).toUpperCase()}</Tx>
-            <rect x={500} y={y0 - size - 30} width="80" height="6" fill={P.accent} />
+            <defs>
+              <radialGradient id="cvg" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stopColor={P.accent} stopOpacity={light ? 0.4 : 0.22} /><stop offset="100%" stopColor={P.accent} stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            {rays}
+            <rect width={WIDTH} height={HEIGHT} fill="url(#cvg)" />
+            <circle cx={AX} cy={AY} r={385} fill={light ? '#ffffff' : P.bg2} stroke={P.accent} strokeWidth={14} />
+            <circle cx={AX} cy={AY} r={425} fill="none" stroke={P.accent} strokeWidth={5} strokeDasharray="6 22" strokeLinecap="round" opacity={0.8} />
+            {arts.map((a, i) => {
+              const o: any = typeof a === 'string' ? {name: a} : a;
+              const two = arts.length > 1;
+              return <ArtItem key={i} i={i} name={o.name} t={1.2} t0={0} x={o.x ?? (two ? (i ? 735 : 345) : AX)} y={o.y ?? AY} s={o.s ?? (two ? 1.05 : 1.7)} halo={false} v={o.v} rot={o.rot} />;
+            })}
+            <g transform={`translate(${540 - kw / 2} 292)`}>
+              <rect width={kw} height="68" rx="34" fill={P.accent} />
+              <Tx x={kw / 2} y={46} size={30} fill={P.ink} font={F.mono} weight={700} ls={5}>{kick}</Tx>
+            </g>
+            {cv.badge && (
+              <g transform="translate(850 455) rotate(9)">
+                <rect x="-130" y="-52" width="260" height="104" rx="22" fill={P.alert} stroke={P.ink} strokeWidth={7} />
+                <Tx x={0} y={20} size={Math.min(54, 230 / Math.max(1, cv.badge.length * 0.66))} fill="#ffffff">{String(cv.badge).toUpperCase()}</Tx>
+              </g>
+            )}
             {lines.map((l, i) => {
               const hl = i === lines.length - 1;
-              const w = l.length * size * 0.62 + 50;
+              const w = l.length * size * 0.64 + 60;
+              const y = y0 + i * lh;
               return (
                 <g key={i}>
-                  {hl && light && <rect x={540 - w / 2} y={y0 + i * size * 1.15 - size * 0.86} width={w} height={size * 1.1} rx={14} fill={P.accent} />}
-                  <Tx x={540} y={y0 + i * size * 1.15} size={size} fill={hl ? (light ? P.ink : P.accent) : P.text}>{l.toUpperCase()}</Tx>
+                  {hl && <rect x={540 - w / 2} y={y - size * 0.86} width={w} height={size * 1.08} rx={16} fill={P.accent} stroke={P.ink} strokeWidth={6} />}
+                  <Tx x={540} y={y} size={size} fill={hl ? P.ink : P.text} stroke={hl ? undefined : light ? P.bg : P.ink}>{l}</Tx>
                 </g>
               );
             })}
-            {cv.sub && <Tx x={540} y={y0 + lines.length * size * 1.15 + 40} size={34} fill={P.muted} font={F.mono} weight={700} ls={3}>{cv.sub}</Tx>}
-            <Tx x={540} y={1180} size={30} fill={P.muted} font={F.mono} weight={700} ls={4}>{job.brand.handle}</Tx>
+            {cv.sub && <Tx x={540} y={yEnd + 78} size={32} fill={P.muted} font={F.mono} weight={700} ls={3}>{cv.sub}</Tx>}
+            <Tx x={540} y={yEnd + 140} size={30} fill={P.muted} font={F.mono} weight={700} ls={4}>{job.brand.handle}</Tx>
           </svg>
         </AbsoluteFill>
       </AbsoluteFill>

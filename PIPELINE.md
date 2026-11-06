@@ -47,3 +47,6 @@ Brand repo ini: `rapihin` (`job/meta.json` → `"brand":"rapihin"`). Brand lain:
 - Claude tidak bisa mendengar audio: intonasi/logat dinilai manusia.
 - Timing per kata diperkirakan dari jumlah suku kata (akurat sekitar 0,1 dtk).
 - Aset visual = SVG/CSS buatan kode; tidak ada gambar/musik/SFX bawaan.
+
+## Catatan kedaluwarsa audio
+URL audio (`job/audio.url`, dari `get_mount_file_url` Composio) hanya berlaku sekitar 1 jam. Render langsung setelah TTS aman. Bila run gagal dengan 404 saat unduh audio, atau commit ulang dilakukan lebih dari ±30 menit setelah TTS, jalankan ulang `scripts/tts_workbench.py` (URL baru; ikut meng-commit ulang semua file job).

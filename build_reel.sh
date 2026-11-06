@@ -5,7 +5,7 @@ ROOT=$PWD
 mkdir -p out pub public
 if [ -s job/audio.url ]; then
   URL="$(tr -d '\r\n ' < job/audio.url)"
-  curl -fsSL --retry 3 -o public/narasi.wav "$URL"
+  curl -fsSL --retry 3 -o public/narasi.wav "$URL" || { echo "::error::Unduh audio gagal (URL berbagi Composio hanya berlaku sekitar 1 jam; HTTP 404 = kedaluwarsa). Jalankan ulang scripts/tts_workbench.py untuk URL baru lalu commit ulang."; exit 22; }
   ffprobe -v error -show_entries stream=codec_name,sample_rate,channels -show_entries format=duration -of compact public/narasi.wav
 else
   echo "TIDAK ADA job/audio.url -> render tanpa suara"; rm -f public/narasi.wav

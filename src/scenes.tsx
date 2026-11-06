@@ -318,7 +318,13 @@ export const Crowd: React.FC<SceneProps> = ({t, b, s}) => {
     const at = t0 + (i / N) * (t1 - t0);
     const p = pop(t, at, 0.3);
     const marked = i < M && t > t1 + 0.1;
-    return <Person key={i} x={CX + (c - (inRow - 1) / 2) * sp} y={620 + r * sp * 1.05} s={0.85 * clamp(p)} fill={marked ? P.alert : P.text} op={clamp(p)} />;
+    const px = CX + (c - (inRow - 1) / 2) * sp, py = 620 + r * sp * 1.05;
+    return (
+      <g key={i}>
+        <Person x={px} y={py} s={0.85} fill={P.muted} op={0.16 * (1 - clamp(p))} />
+        <Person x={px} y={py} s={0.85 * clamp(p)} fill={marked ? P.alert : P.text} op={clamp(p)} />
+      </g>
+    );
   });
   return (
     <g>

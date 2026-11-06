@@ -1,0 +1,20 @@
+{
+  "name": "reel-engine",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "remotion": "4.0.250",
+    "@remotion/cli": "4.0.250",
+    "@remotion/bundler": "4.0.250",
+    "@remotion/renderer": "4.0.250",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "5.5.4",
+    "@types/react": "18.3.3",
+    "@fontsource/plus-jakarta-sans": "5.0.21",
+    "@fontsource/inter": "5.0.20",
+    "@fontsource/dm-serif-display": "5.0.19",
+    "@fontsource/jetbrains-mono": "5.0.20",
+    "@fontsource/ibm-plex-mono": "5.0.13"
+  }
+}

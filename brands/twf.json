@@ -1,0 +1,25 @@
+{
+  "id": "twf",
+  "name": "THE WHY FILES ID",
+  "handle": "@thewhyfiles.id",
+  "tagline": "Everything has a reason.",
+  "mode": "dark",
+  "palette": {
+    "bg": "#181818", "bg2": "#252321", "vig0": "#2b2927", "vig1": "#1d1c1a", "vig2": "#0f0f0e",
+    "grid": "#ffffff", "gridOp": 0.04,
+    "text": "#efede9", "muted": "#a5a5a0", "faint": "#6e6e69",
+    "paper": "#e9e3d1", "ink": "#16130e", "paperMuted": "#5a5547",
+    "accent": "#f4c430", "accent2": "#4f66f5", "alert": "#e5483f", "good": "#4fbf8f",
+    "capText": "#ffffff", "capStroke": "#000000", "capActive": "#f4c430", "capStyle": "outline"
+  },
+  "fonts": {"head": "Plus Jakarta Sans", "mono": "JetBrains Mono", "serif": "DM Serif Display", "body": "Inter"},
+  "fontFiles": [
+    ["Plus Jakarta Sans", 700, "plus-jakarta-sans", "latin-700-normal"],
+    ["Plus Jakarta Sans", 800, "plus-jakarta-sans", "latin-800-normal"],
+    ["Inter", 400, "inter", "latin-400-normal"],
+    ["Inter", 500, "inter", "latin-500-normal"],
+    ["JetBrains Mono", 500, "jetbrains-mono", "latin-500-normal"],
+    ["JetBrains Mono", 700, "jetbrains-mono", "latin-700-normal"],
+    ["DM Serif Display", 400, "dm-serif-display", "latin-400-normal"]
+  ]
+}

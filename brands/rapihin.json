@@ -1,0 +1,75 @@
+{
+  "id": "rapihin",
+  "name": "RAPIHIN SKRIPSI",
+  "handle": "@rapihin.skripsi",
+  "tagline": "Kamu yang menulis, kami yang merapikan.",
+  "mode": "light",
+  "palette": {
+    "bg": "#F6F8F5",
+    "bg2": "#E9EFEA",
+    "vig0": "#FBFCFA",
+    "vig1": "#F6F8F5",
+    "vig2": "#E3EBE5",
+    "grid": "#3B82B0",
+    "gridOp": 0.1,
+    "text": "#12201D",
+    "muted": "#4C6660",
+    "faint": "#7C918B",
+    "paper": "#FFFFFF",
+    "ink": "#12201D",
+    "paperMuted": "#4C6660",
+    "accent": "#FFE45C",
+    "accent2": "#0E5C4E",
+    "alert": "#C23B22",
+    "good": "#0E5C4E",
+    "capText": "#12201D",
+    "capStroke": "#F6F8F5",
+    "capActive": "#12201D",
+    "capStyle": "highlight",
+    "capHl": "#FFE45C"
+  },
+  "fonts": {
+    "head": "Plus Jakarta Sans",
+    "mono": "IBM Plex Mono",
+    "serif": "Plus Jakarta Sans",
+    "body": "Inter"
+  },
+  "fontFiles": [
+    [
+      "Plus Jakarta Sans",
+      700,
+      "plus-jakarta-sans",
+      "latin-700-normal"
+    ],
+    [
+      "Plus Jakarta Sans",
+      800,
+      "plus-jakarta-sans",
+      "latin-800-normal"
+    ],
+    [
+      "Inter",
+      400,
+      "inter",
+      "latin-400-normal"
+    ],
+    [
+      "Inter",
+      500,
+      "inter",
+      "latin-500-normal"
+    ],
+    [
+      "IBM Plex Mono",
+      500,
+      "ibm-plex-mono",
+      "latin-500-normal"
+    ],
+    [
+      "IBM Plex Mono",
+      700,
+      "ibm-plex-mono",
+      "latin-700-normal"
+    ]
+  ]
+}

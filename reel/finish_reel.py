@@ -17,6 +17,16 @@ def probe(*args):
     return subprocess.check_output(["ffprobe", "-v", "error", *args, "out/reel.mp4"]).decode()
 
 
+# ffmpeg di runner Ubuntu menandai video dari frame JPEG sebagai yuvj420p (full range).
+# Instagram dan pemutar lain paling aman dengan yuv420p (TV range), jadi encode ulang bila perlu.
+pf = probe("-select_streams", "v:0", "-show_entries", "stream=pix_fmt", "-of", "csv=p=0").strip()
+if pf != "yuv420p":
+    print(f"pix_fmt {pf} -> yuv420p (encode ulang video, audio disalin)")
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", "out/reel.mp4", "-map", "0", "-c:v", "libx264", "-crf", "20",
+                    "-preset", "veryfast", "-vf", "scale=in_range=pc:out_range=tv,format=yuv420p", "-color_range", "tv",
+                    "-c:a", "copy", "-movflags", "+faststart", "out/reel.fix.mp4"], check=True)
+    os.replace("out/reel.fix.mp4", "out/reel.mp4")
+
 dur = float(probe("-show_entries", "format=duration", "-of", "csv=p=0"))
 v = json.loads(probe("-select_streams", "v:0", "-show_entries", "stream=codec_name,width,height,pix_fmt,r_frame_rate", "-of", "json"))["streams"][0]
 a = probe("-select_streams", "a:0", "-show_entries", "stream=codec_name", "-of", "csv=p=0").strip()

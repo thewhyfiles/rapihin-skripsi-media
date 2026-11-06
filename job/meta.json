@@ -1,16 +1,1 @@
-{
- "brand": "rapihin",
- "title": "Kenapa Kita Justru Memikirkan Hal yang Ingin Kita Lupakan?",
- "fileNo": "TIPS No. 001",
- "source": "sumber: contoh uji mesin",
- "publishBranch": "reel-remotion",
- "cover": {
-  "kicker": "Rapihin Skripsi",
-  "lines": [
-   "Daftar pustaka",
-   "sering salah",
-   "di sini"
-  ],
-  "sub": "Contoh uji mesin"
- }
-}
+{"brand": "rapihin", "title": "Spasi baris dan spasi paragraf: apa bedanya?", "fileNo": "TIPS No. 003", "source": "contoh umum, ikut pedoman kampus", "publishBranch": "reel-remotion", "cover": {"kicker": "Rapihin Skripsi", "lines": ["Spasi baris", "vs spasi", "paragraf"], "sub": "Tips format"}}

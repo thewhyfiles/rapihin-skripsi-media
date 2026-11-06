@@ -1,0 +1,35 @@
+name: reel
+on:
+  push:
+    branches: [main]
+    paths: ['reel/job/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: reel
+  cancel-in-progress: false
+jobs:
+  reel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: md5sum reel/job/* reel/engine/scripts/* reel/engine/assets/story2d/* reel/build_reel.sh || true
+      - run: bash reel/build_reel.sh
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+      - name: Publish outputs to branch reel
+        run: |
+          cd reel/out
+          git init -q -b reel
+          git add -A
+          git -c user.name=rapihin-bot -c user.email=bot@users.noreply.github.com commit -qm "reel ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" reel
+          git rev-parse HEAD
+          find . -type f -not -path './.git/*' -exec ls -l {} \;

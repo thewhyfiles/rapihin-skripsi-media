@@ -1,1 +1,49 @@
-{"slug":"2026-11-05-margin-kiri","fps":30,"scene_seconds":[4.4,6.4,7.0,5.5,4.7],"voice":{"name":"am_michael","speed":0.96,"lang":"en-us"},"lines":[{"at":0.3,"dur":3.61,"text":"Why is the left margin of your thesis bigger than the rest?"},{"at":4.6,"dur":5.5,"text":"Because it gets bound. The extra space keeps your text from disappearing into the spine."},{"at":11.0,"dur":5.89,"text":"A common example is four, three, three, three centimeters. Left, top, right, bottom."},{"at":18.0,"dur":4.33,"text":"But your campus handbook has the final say. Always check it first."},{"at":23.6,"dur":2.58,"text":"You write the thesis. We make it neat."}],"cover_t":1.9,"carousel":{"slides":8,"width":1080,"height":1350}}
+{
+ "slug": "2026-11-06-cover-pengesahan",
+ "fps": 30,
+ "scene_seconds": [
+  4.4,
+  6.4,
+  7.0,
+  5.5,
+  4.7
+ ],
+ "voice": {
+  "name": "am_michael",
+  "speed": 0.96,
+  "lang": "en-us"
+ },
+ "lines": [
+  {
+   "at": 0.3,
+   "dur": 3.61,
+   "text": "Why is the left margin of your thesis bigger than the rest?"
+  },
+  {
+   "at": 4.6,
+   "dur": 5.5,
+   "text": "Because it gets bound. The extra space keeps your text from disappearing into the spine."
+  },
+  {
+   "at": 11.0,
+   "dur": 5.89,
+   "text": "A common example is four, three, three, three centimeters. Left, top, right, bottom."
+  },
+  {
+   "at": 18.0,
+   "dur": 4.33,
+   "text": "But your campus handbook has the final say. Always check it first."
+  },
+  {
+   "at": 23.6,
+   "dur": 2.58,
+   "text": "You write the thesis. We make it neat."
+  }
+ ],
+ "cover_t": 1.9,
+ "carousel": {
+  "slides": 8,
+  "width": 1080,
+  "height": 1350
+ }
+}

@@ -1,0 +1,29 @@
+name: render-story
+on:
+  push:
+    branches: [story-build]
+permissions:
+  contents: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: bash build_story.sh
+      - name: Publish reel branch
+        run: |
+          cd pub
+          git init -q -b reel
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add reel.mp4 cover.jpg timing.json
+          git commit -q -m "reel from ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" reel

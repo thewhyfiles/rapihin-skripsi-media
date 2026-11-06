@@ -1,0 +1,10 @@
+{
+  "name": "rapihin-reel-story2d",
+  "private": true,
+  "dependencies": {
+    "@fontsource/plus-jakarta-sans": "^5.1.0",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/dm-serif-display": "^5.1.0",
+    "@fontsource/jetbrains-mono": "^5.1.0"
+  }
+}

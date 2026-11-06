@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style id="fontcss"></style>
+<style>
+  /* Everything is computed from t in stage.js; no CSS transitions or animations on purpose. */
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  #root { position: relative; overflow: hidden; --u: 1px; background: #000; }
+  #root > * { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+  #stage { display: block; }
+  #grain { opacity: 0; background-size: 256px 256px; mix-blend-mode: overlay; }
+  #fade { background: #000; opacity: 0; }
+  #caption { top: 0; height: auto; text-align: center; font-weight: 700; color: #fff; letter-spacing: .005em;
+             text-shadow: 0 calc(1.5 * var(--u)) calc(5 * var(--u)) rgba(0,0,0,.65); will-change: transform; }
+  #wm { height: auto; text-align: center; font-weight: 500; letter-spacing: .01em; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="root">
+  <svg id="stage" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div id="grain"></div>
+  <div id="fade"></div>
+  <div id="caption"></div>
+  <div id="wm"></div>
+</div>
+<script src="./stage.js"></script>
+</body>
+</html>

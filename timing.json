@@ -1,0 +1,111 @@
+[
+ {
+  "text": "Why does your thesis have two different kinds of page numbers?",
+  "start": 0.25,
+  "dur": 3.776,
+  "beat": 4.376,
+  "word_times": [
+   0.25,
+   0.498,
+   0.797,
+   1.095,
+   1.492,
+   1.79,
+   2.039,
+   2.585,
+   2.933,
+   3.132,
+   3.43,
+   4.026
+  ]
+ },
+ {
+  "text": "The front pages, like the abstract and the table of contents, use small roman numerals.",
+  "start": 0.25,
+  "dur": 5.931,
+  "beat": 6.531,
+  "word_times": [
+   0.25,
+   0.522,
+   0.903,
+   1.447,
+   1.773,
+   2.046,
+   2.59,
+   2.862,
+   3.134,
+   3.515,
+   3.732,
+   4.44,
+   4.712,
+   5.092,
+   5.473,
+   6.181
+  ]
+ },
+ {
+  "text": "Then chapter one starts over at page one, using regular numbers like one, two, three.",
+  "start": 0.25,
+  "dur": 5.952,
+  "beat": 6.552,
+  "word_times": [
+   0.25,
+   0.578,
+   1.069,
+   1.342,
+   1.779,
+   2.107,
+   2.325,
+   2.653,
+   3.089,
+   3.472,
+   3.963,
+   4.455,
+   4.782,
+   5.219,
+   5.656,
+   6.202
+  ]
+ },
+ {
+  "text": "A section break separates the two parts, and your campus handbook sets the final rules.",
+  "start": 0.25,
+  "dur": 5.568,
+  "beat": 6.168,
+  "word_times": [
+   0.25,
+   0.406,
+   0.874,
+   1.239,
+   1.811,
+   2.071,
+   2.331,
+   2.852,
+   3.112,
+   3.424,
+   3.841,
+   4.361,
+   4.673,
+   4.933,
+   5.298,
+   5.818
+  ]
+ },
+ {
+  "text": "You write the thesis. We make it neat.",
+  "start": 0.25,
+  "dur": 2.581,
+  "beat": 3.731,
+  "word_times": [
+   0.25,
+   0.503,
+   0.857,
+   1.11,
+   1.667,
+   1.87,
+   2.173,
+   2.376,
+   2.831
+  ]
+ }
+]

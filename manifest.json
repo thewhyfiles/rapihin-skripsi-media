@@ -1,0 +1,23 @@
+{
+ "source_sha": "0bc19e16f0db8d8a43792b8aa9e79da9fd8cfec9",
+ "slug": "2026-11-07-kertas-landscape",
+ "files": [
+  "audio/durs.json",
+  "audio/v1.wav",
+  "audio/v2.wav",
+  "audio/v3.wav",
+  "audio/v4.wav",
+  "audio/v5.wav",
+  "carousel/slide-01.jpg",
+  "carousel/slide-02.jpg",
+  "carousel/slide-03.jpg",
+  "carousel/slide-04.jpg",
+  "carousel/slide-05.jpg",
+  "carousel/slide-06.jpg",
+  "carousel/slide-07.jpg",
+  "carousel/slide-08.jpg",
+  "cover.jpg",
+  "cover_frame.jpg",
+  "reel.mp4"
+ ]
+}
